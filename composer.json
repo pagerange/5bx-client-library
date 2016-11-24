@@ -1,25 +1,19 @@
 {
-    "name": "pagerange/5bx",
-    "description": "Client Library for 5BX Mock Payment Gateway",
+    "name": "pagerange/5bx-client-library",
+    "description": "5bx Client Library",
+    "type": "package",
     "license": "MIT",
-    "keywords": ["5bx", "creditcard", "payment gateway"],
     "authors": [
         {
-            "name": "Seve George",
-            "email": "steve@pagerange.com",
-            "role": "developer",
-            "homepage": "http://www.pagerange.com"
+            "name": "Steve George",
+            "email": "steve@pagerange.com"
         }
     ],
-    "require": {
-      "php": ">=5.5.0"
-      },
-    "require-dev": {
-      "phpunit/phpunit": "5.*"
-      },
-    "autoload": {
-        "psr-0" : {
-          "Pagerange\\5bx" : "src"
-        }
+	"autoload": {
+	    "psr-0" : {
+		   "Pagerange\\5bx" : "src"
+		}
     }
+    "minimum-stability": "alpha",
+    "require": {}
 }
