@@ -13,7 +13,6 @@
 	    "psr-0" : {
 		   "Pagerange\\5bx" : "src"
 		}
-    }
-    "minimum-stability": "alpha",
+    },
     "require": {}
 }
