@@ -14,7 +14,7 @@ Use and instantiate the 5bx class, then authorize your mock transaction through 
     // get your response by executing the authorize_and_capture() method
     // $response is a JSON object, already encoded
     
-        use Pagerange\5bx
+        use Pagerange\Bx\5bx
 
         $transaction = new _5bx($my_login_id, $my_api_key);
         $transaction->amount('5.99');
