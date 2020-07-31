@@ -10,8 +10,8 @@
         }
     ],
 	"autoload": {
-	    "psr-0" : {
-		   "Pagerange\\Bx" : "src"
+	    "psr-4" : {
+		   "Pagerange\\Bx" : "src/"
 		}
     },
     "require": {}
