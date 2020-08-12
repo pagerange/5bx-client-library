@@ -80,15 +80,15 @@ class _5bx {
     $posturl = 'http://5bx.ca/bx/auth';
 
     //
-    $postString = http_build_query($this, '', '&');
+    $postString = \http_build_query($this, '', '&');
 
-    $ch = curl_init();
-    curl_setopt ($ch, CURLOPT_URL, $posturl);
-    curl_setopt ($ch, CURLOPT_POST, 2);
-    curl_setopt ($ch, CURLOPT_POSTFIELDS, $postString);
-    curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
-    $result = curl_exec ($ch);
-    curl_close ($ch);
+    $ch = \curl_init();
+    \curl_setopt ($ch, CURLOPT_URL, $posturl);
+    \curl_setopt ($ch, CURLOPT_POST, 2);
+    \curl_setopt ($ch, CURLOPT_POSTFIELDS, $postString);
+    \curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+    $result = \curl_exec ($ch);
+    \curl_close ($ch);
 
   return $result;
 
