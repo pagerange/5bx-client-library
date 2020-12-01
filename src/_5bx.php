@@ -13,6 +13,10 @@
 
 namespace Pagerange\Bx;
 
+
+
+
+
 class _5bx {
 
   private $login_id; // your login ID
@@ -77,7 +81,7 @@ class _5bx {
   private function __transmit() {
 
     // Gateway URL
-    $posturl = 'http://5bx.ca/bx/auth';
+    $posturl = 'https://5bx.ca/bx/auth';
 
     //
     $postString = \http_build_query($this, '', '&');
@@ -85,6 +89,7 @@ class _5bx {
     $ch = \curl_init();
     \curl_setopt ($ch, CURLOPT_URL, $posturl);
     \curl_setopt ($ch, CURLOPT_POST, 2);
+    \curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
     \curl_setopt ($ch, CURLOPT_POSTFIELDS, $postString);
     \curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
     $result = \curl_exec ($ch);

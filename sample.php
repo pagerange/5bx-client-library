@@ -6,12 +6,13 @@
  * @dependencies: 5bx.php
  */
 
+require __DIR__ . '/src/_5bx.php';
 
+use Pagerange\Bx\_5bx;
 
-define('_5BX_API_LOGIN_ID', 'your_login_here');
+define('_5BX_API_LOGIN_ID', 'YOUR_LOGIN_ID_HERE');
 
-define('_5BX_API_KEY',
-'your_key_here');
+define('_5BX_API_KEY', 'YOUR_API_KEY_HERE');
 
 
 
@@ -21,7 +22,7 @@ define('_5BX_API_KEY',
 // get your response by execting the authorize_and_capture() method
 // $response is a JSON object, already encoded
   try {
-	  $transaction = new _5bx();
+	  $transaction = new _5bx(_5BX_API_LOGIN_ID, _5BX_API_KEY);
 	  $transaction->amount('5.99');
 	  $transaction->card_num('4111111111111111'); // credit card number
 	  $transaction->exp_date ('0418'); // expiry date month and year
