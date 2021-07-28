@@ -10,8 +10,10 @@ require __DIR__ . '/src/_5bx.php';
 
 use Pagerange\Bx\_5bx;
 
-define('_5BX_API_LOGIN_ID', '23452345');
 
+// These test values may or may not work
+// For consisten results, get your own id and key
+define('_5BX_API_LOGIN_ID', '23452345');
 define('_5BX_API_KEY', 'asdfasdfasdfasdfasdfasdf');
 
 
