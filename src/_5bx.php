@@ -19,14 +19,12 @@ namespace Pagerange\Bx;
 
 class _5bx {
 
-  private $login_id; // your login ID
-  private $api_key; // your API key
-  private $amount;  // total sale amount
-  private $card_type; // card type (visa, mastercard, ammex)
-  private $card_number; // credit card number
-  private $cvv; // cvv security number
-  private $expiry_date; // expiry date in format mmyy
-  private $reference_number; // your reference #  eg, invoice #.
+  /**
+   * array of parameters to send by post to 5bx gateway
+   * @var array
+   */
+  private $params = [];
+
 
   /**
    * @param String $login_id 5bx login id
@@ -34,37 +32,70 @@ class _5bx {
    */
   public function __construct($login_id, $api_key) {
 
-    $this->login_id = $login_id;
-    $this->api_key = $api_key;
+    $this->params['login_id'] = $login_id;
+    $this->params['api_key'] = $api_key;
 
   }
 
-
+  /**
+   * [amount description]
+   * @param  [type] $amount Total amount of transaction
+   * @return void
+   */
   public function amount($amount) {
-    $this->amount = $amount;
+    $this->params['amount'] = $amount;
   }
 
+  /**
+   * CVV Secutity code
+   * @param  Integer $cvv 
+   * @return Void
+   */
   public function cvv($cvv) {
-    $this->cvv = $cvv;
+    $this->params['cvv'] = $cvv;
   }
 
+  /**
+   * Thpe of credit card
+   * @param  String Card type
+   * @return Void
+   */
   public function card_type($type) {
-    $this->card_type = $type;
+    $this->params['card_type'] = $type;
   }
 
+  /**
+   * Card number
+   * @param  Integer $ccnum Credit card number
+   * @return Void
+   */
   public function card_num($ccnum) {
-    $this->card_number = $ccnum;
+    $this->params['card_number'] = $ccnum;
   }
 
+  /**
+   * Expiry date
+   * @param  String $exp_date Card expiry date
+   * @return Void
+   */
   public function exp_date($exp_date) {
-    $this->expiry_date = $exp_date;
+    $this->params['expiry_date'] = $exp_date;
   }
 
+  /**
+   * Your reference number (order id)
+   * @param  String $ref_num Your order ID 
+   * @return Void
+   */
   public function ref_num($ref_num) {
-    $this->reference_number = $ref_num;
+    $this->params['reference_number'] = $ref_num;
   }
 
 
+  /**
+   * Send data and return the transaction data
+   * @return [type] [description]
+   */
   public function authorize_and_capture(){
 
       $response = $this->__transmit();
@@ -83,17 +114,22 @@ class _5bx {
     // Gateway URL
     $posturl = 'https://5bx.ca/bx/auth';
 
-    //
-    $postString = \http_build_query($this, '', '&');
+     //
+    $post_data = json_encode($this->params);
+    
+    $headers=[];
+    $headers[] = 'Content-Type: application/json';
 
     $ch = \curl_init();
     \curl_setopt ($ch, CURLOPT_URL, $posturl);
+    \curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     \curl_setopt ($ch, CURLOPT_POST, 2);
+    \curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
     \curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-    \curl_setopt ($ch, CURLOPT_POSTFIELDS, $postString);
     \curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
     $result = \curl_exec ($ch);
     \curl_close ($ch);
+
 
   return $result;
 

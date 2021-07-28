@@ -10,9 +10,9 @@ require __DIR__ . '/src/_5bx.php';
 
 use Pagerange\Bx\_5bx;
 
-define('_5BX_API_LOGIN_ID', 'YOUR_LOGIN_ID_HERE');
+define('_5BX_API_LOGIN_ID', '23452345');
 
-define('_5BX_API_KEY', 'YOUR_API_KEY_HERE');
+define('_5BX_API_KEY', 'asdfasdfasdfasdfasdfasdf');
 
 
 
@@ -39,6 +39,10 @@ define('_5BX_API_KEY', 'YOUR_API_KEY_HERE');
   // ...output errors
   // ...commit to database
   // ...etc
+  // 
+
+print_r($response);
+die;
 
   if ($response->transaction_response->response_code == '1') {
     // Your transaction was authorized... do something
